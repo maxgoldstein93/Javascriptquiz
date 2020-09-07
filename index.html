@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <div class="container border">
         <div class="row">
             <div class="col-6">
@@ -23,7 +22,6 @@
         </div>
     </div>
     <main>
-
         <div class="container border">
             <div id="hideOnClick" style="display:block">
                 <div class="row ">
@@ -42,28 +40,25 @@
                     </div>
                 </div>
             </div>
-            <div class="hidden" class="row" style="display: none">
+            <div class="hidden" class="row" style="display: none" id="questionContainer">
                 <div class="col text-center ">
-                    <p id="questiontitle">I AM THE FIRST QUESTION</p>
+                    <p id="questionTitle">I AM THE FIRST QUESTION</p>
                 </div>
                 <div class="col text-left ">
-                    <button id="a1">WORDSWORDS</button>
+                    <button id="A" class="choices" onclick="checkAnswer('A')">WORDSWORDS</button>
                 </div>
                 <div class="col text-left ">
-                    <button id="a2">WORDSWORDS</button>
-
+                    <button id="B" class="choices" onclick="checkAnswer('B')">WORDSWORDS</button>
                 </div>
                 <div class="col text-left ">
-                    <button id="a3">WORDSWORDS</button>
+                    <button id="C" class="choices" onclick="checkAnswer('C')">WORDSWORDS</button>
                 </div>
                 <div class="col text-left ">
-                    <button id="a4">WORDSWORDS</button>
+                    <button id="D" class="choices" onclick="checkAnswer('D')">WORDSWORDS</button>
+    
                 </div>
             </div>
         </div>
-
-
-
     </main>
 
     <script src="./quiz.js"></script>
