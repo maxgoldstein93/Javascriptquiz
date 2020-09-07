@@ -4,13 +4,15 @@ var timeEl = document.querySelector("#timer");
 var secondsLeft = 60;
 var startbtn = document.querySelector("#startQuizBtn");
 var question = document.getElementById("questionTitle");
-console.log(question);
 var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
-var wrongAnswer = document.querySelector("wrong");
-console.log(wrongAnswer);
+var wrongAnswer = document.getElementById("wrong");
+var gameOver = document.getElementById("gameOver");
+var clearQuiz = document.getElementById("questionContainer")
+console.log(gameOver);
+
 
 var questions = [
     {
@@ -19,7 +21,8 @@ var questions = [
         choiceB: "function = myFunction()",
         choiceC: "myfun()",
         choiceD: "function myFunction() ",
-        correct: "D"
+        correct: "D",
+        wrong: "Wrong Answer"
     },
     {
         questionTitle: "How to write an IF statement in JavaScript?",
@@ -55,8 +58,17 @@ var questions = [
         correct: "B"
     }];
 
+    // GAME OVER
+    function gameEnd(){
+        if(questions.length === currentQuestion + 1 ){
+            console.log("GAMEOVER")
+
+            
+        }
+    }gameEnd()
+
 // variables
-var lastQuestion = questions.length -1 ;
+var lastQuestion = questions.length - 1;
 var currentQuestion = 0;
 
 // display a question
@@ -70,33 +82,35 @@ function displayQuestion() {
 
 };
 
+// check answer function
+function checkAnswer(answer) {
+    if (answer == questions[currentQuestion].correct) {
+        console.log(answer);
+        secondsLeft += 5;
 
-    // check answer function
-    function checkAnswer(answer) {
-        if (answer == questions[currentQuestion].correct) {
-            console.log(answer);
-            secondsLeft += 5;
-            
-            
-        } 
-        else {
-            console.log("Wrong")
-            secondsLeft -= 10;
-            var newDiv = document.createElement("div");
-            console.log(newDiv);
-            newDiv.textContent = "WRONG!";
-            document.body.appendChild(newDiv)
-            
-            
-            
-        }
-        if(currentQuestion < lastQuestion){
-            currentQuestion++;
-            displayQuestion();
-        }
-    };
 
-console.log(timeEl)
+    }
+    else {
+        console.log("Wrong")
+        secondsLeft -= 10;
+        wrongAnswer.textContent = "Wrong ANSWER!";
+        wrongAnswer.setAttribute("style", "display: block");
+    
+    }
+    if (currentQuestion < lastQuestion) {
+        currentQuestion++;
+        displayQuestion();
+        
+        
+    }
+};
+
+
+function hideWrong(){
+    wrongAnswer.textContent = "Wrong ANSWER!";
+        wrongAnswer.setAttribute("style", "display: none");
+
+}
 
 function quizTimer() {
     var timerInterval = setInterval(function () {
