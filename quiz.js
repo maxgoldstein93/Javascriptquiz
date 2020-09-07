@@ -15,25 +15,39 @@ function quizTimer() {
 
     }, 1000);
 }
-document.body.appendChild(timeEl);
+
 
 // START QUIZ TIMER
 var startbtn = document.querySelector("#startQuizBtn")
 
 startbtn.addEventListener("click", function () {
-    quizTimer()
-    unHide()
+    quizTimer();
+     unHide();
+     Hide();
 
 });
+
+// function to unhide questions
 function unHide() {
     var x = document.querySelector(".hidden");
-    console.log(x);
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {
         x.style.display = "none";
     }
-}
+};
+
+// function to hide start screen
+function Hide(){
+    var hideContainer =document.querySelector("#hideOnClick");
+    console.log(hideContainer);
+    if (hideContainer.style.display === "block") {
+        hideContainer.style.display = "none";
+    } 
+};
+
+
+
 
 
 
@@ -62,4 +76,4 @@ function unHide() {
 // correctAnswer: answer1
 // }, 
 
-// ]
+// 

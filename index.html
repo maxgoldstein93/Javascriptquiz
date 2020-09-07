@@ -7,53 +7,67 @@
     <title>Javascript Quiz</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css" />
-    </head>
+    <link rel="stylesheet" href="style.css" />
+</head>
 
 <body>
 
-    <div class="container border" >
+    <div class="container border">
         <div class="row">
             <div class="col-6">
                 <a href="highscore.html"> View High Scores</a>
             </div>
             <div class="col-6">
-                <p  class="text-right"id="timer">timer</p>
+                <p class="text-right" id="timer"></p>
             </div>
         </div>
     </div>
-<main>
-    <div class="container border" >
-        <div class="row ">
-            <div class="col text-center ">
-            <h1 >CODING QUIZ CHALLENGE!</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col text-center ">
-            <p> INSTRUCTIONS </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col text-center ">
-                <button id ="startQuizBtn">START Quiz!</button>
-            </div>
-        </div>
-        <div class ="hidden"> 
-            <p id = "questiontitle"></p>
-            <button id="a1"></button>
-            <button id="a2"></button>
-            <button id="a2"></button>
-            <button id="a2"></button>
-        </div>
-    </div>
-           
-            
+    <main>
 
-</main>
+        <div class="container border">
+            <div id="hideOnClick" style="display:block">
+                <div class="row ">
+                    <div class="col text-center ">
+                        <h1>CODING QUIZ CHALLENGE!</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center ">
+                        <p> INSTRUCTIONS </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center ">
+                        <button id="startQuizBtn">START Quiz!</button>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden" class="row" style="display: none">
+                <div class="col text-center ">
+                    <p id="questiontitle">I AM THE FIRST QUESTION</p>
+                </div>
+                <div class="col text-left ">
+                    <button id="a1">WORDSWORDS</button>
+                </div>
+                <div class="col text-left ">
+                    <button id="a2">WORDSWORDS</button>
+
+                </div>
+                <div class="col text-left ">
+                    <button id="a3">WORDSWORDS</button>
+                </div>
+                <div class="col text-left ">
+                    <button id="a4">WORDSWORDS</button>
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
 
     <script src="./quiz.js"></script>
-    
-</body>
-</html>
 
+</body>
+
+</html>
