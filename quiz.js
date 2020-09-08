@@ -2,6 +2,7 @@
 
 var timeEl = document.querySelector("#timer");
 var secondsLeft = 60;
+var timerInterval
 var startbtn = document.querySelector("#startQuizBtn");
 var question = document.getElementById("questionTitle");
 var choiceA = document.getElementById("A");
@@ -83,9 +84,13 @@ function displayQuestion() {
     wrongAnswer.textContent = " The last question was wrong lol";
     wrongAnswer.setAttribute("style", "display: none");
     if (currentQuestion >= 4) {
-        console.log("endgame")
+        setTimeout(() => {console.log("endgame")
         clearQuiz.setAttribute("style", "display: none");
         gameOver.setAttribute("style", "display: block");
+        clearInterval(timerInterval);
+            
+        }, 5000);
+        
 
     }
 };
@@ -114,7 +119,7 @@ function checkAnswer(answer) {
 };
 
 function quizTimer() {
-    var timerInterval = setInterval(function () {
+     timerInterval = setInterval(function () {
         timeEl.textContent = "Time: " + secondsLeft;
 
         if (secondsLeft === 0) {
@@ -170,7 +175,9 @@ submitBtn.addEventListener("click", function (event) {
     event.preventDefault();
 
     var initials = document.querySelector("#initials").value;
-    console.log(initials)
+    console.log(initials);
+    var finalScore = {initals:initials, score: secondsLeft + 1 };
+
 
     if (initials === "") {
         displayMessage("error", "Initials cannot be blank");
@@ -178,7 +185,7 @@ submitBtn.addEventListener("click", function (event) {
     } else {
         displayMessage("success", "Score Submitted!!");
 
-        localStorage.setItem("initials", initials)
+        localStorage.setItem("initials",JSON.stringify(finalScore))
         renderLastRegistered()
     }
 });
