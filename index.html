@@ -45,21 +45,46 @@
                     <p id="questionTitle">I AM THE FIRST QUESTION</p>
                 </div>
                 <div class="col text-left ">
-                    <button id="A" class="choices" onclick="checkAnswer('A')">WORDSWORDS</button>
+                    <button type="button" class="btn btn-danger m-1 p-2" id="A" class="choices"
+                        onclick="checkAnswer('A')">WORDSWORDS</button>
                 </div>
                 <div class="col text-left ">
-                    <button id="B" class="choices" onclick="checkAnswer('B')">WORDSWORDS</button>
+                    <button type="button" class="btn btn-danger m-1 p-2" id="B" class="choices"
+                        onclick="checkAnswer('B')">WORDSWORDS</button>
                 </div>
                 <div class="col text-left ">
-                    <button id="C" class="choices" onclick="checkAnswer('C')">WORDSWORDS</button>
+                    <button type="button" class="btn btn-danger m-1 p-2" id="C" class="choices"
+                        onclick="checkAnswer('C')">WORDSWORDS</button>
                 </div>
                 <div class="col text-left ">
-                    <button id="D" class="choices" onclick="checkAnswer('D')">WORDSWORDS</button>
-                    <div id="wrong" style = "display: none"></div>
+                    <button type="button" class="btn btn-danger m-1 p-2" id="D" class="choices"
+                        onclick="checkAnswer('D')">WORDSWORDS</button>
+                    <div id="wrong" style="display: none"></div>
                 </div>
             </div>
+
+            <div id="gameOver" class="container" style="display: none">
+                <div class="row">
+                    <div class="col">
+                        <h2 class="text-center">All done! Please submit First and Last Initial to record score!!</h2>
+                    </div>
+                </div>
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            </div>
+                            <input type="text" id="initials" class="form-control" placeholder="Enter Initials">
+                        </div>
+                            <div id="msg"></div>
+                        <button id="submit" type="submit" value="Submit" class="btn btn-danger btn-lg m-2">Submit</button>
+                    </form>
+
+                </div>
+
+            </div>
         </div>
-        <div id= "gameOver" class="row" style = "display: none"></div>
+
+
     </main>
 
     <script src="./quiz.js"></script>

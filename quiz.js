@@ -9,10 +9,12 @@ var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
 var wrongAnswer = document.getElementById("wrong");
+var correctAnswer = document.getElementById("wrong");
+
 var gameOver = document.getElementById("gameOver");
 var clearQuiz = document.getElementById("questionContainer")
-console.log(gameOver);
-
+var choiceEl = document.getElementsByClassName("choices")
+console.log(choiceEl);
 
 var questions = [
     {
@@ -22,7 +24,7 @@ var questions = [
         choiceC: "myfun()",
         choiceD: "function myFunction() ",
         correct: "D",
-        wrong: "Wrong Answer"
+
     },
     {
         questionTitle: "How to write an IF statement in JavaScript?",
@@ -58,14 +60,13 @@ var questions = [
         correct: "B"
     }];
 
-    // GAME OVER
-    function gameEnd(){
-        if(questions.length === currentQuestion + 1 ){
-            console.log("GAMEOVER")
+// // GAME OVER
+// function gameEnd(){
+//     if(questions.length === currentQuestion + 1 ){
+//         console.log("GAMEOVER")
 
-            
-        }
-    }gameEnd()
+//     }
+// }gameEnd()
 
 // variables
 var lastQuestion = questions.length - 1;
@@ -79,7 +80,14 @@ function displayQuestion() {
     choiceB.textContent = q.choiceB;
     choiceC.textContent = q.choiceC;
     choiceD.textContent = q.choiceD;
+    wrongAnswer.textContent = " The last question was wrong lol";
+    wrongAnswer.setAttribute("style", "display: none");
+    if (currentQuestion >= 4) {
+        console.log("endgame")
+        clearQuiz.setAttribute("style", "display: none");
+        gameOver.setAttribute("style", "display: block");
 
+    }
 };
 
 // check answer function
@@ -87,30 +95,23 @@ function checkAnswer(answer) {
     if (answer == questions[currentQuestion].correct) {
         console.log(answer);
         secondsLeft += 5;
-
-
+        correctAnswer.textContent = "Correct!";
+        correctAnswer.setAttribute("style", "display: block");
     }
     else {
         console.log("Wrong")
         secondsLeft -= 10;
-        wrongAnswer.textContent = "Wrong ANSWER!";
+        wrongAnswer.textContent = "Wrong!";
         wrongAnswer.setAttribute("style", "display: block");
-    
+
+
     }
     if (currentQuestion < lastQuestion) {
         currentQuestion++;
-        displayQuestion();
-        
-        
+        setTimeout(displayQuestion, 500);
+
     }
 };
-
-
-function hideWrong(){
-    wrongAnswer.textContent = "Wrong ANSWER!";
-        wrongAnswer.setAttribute("style", "display: none");
-
-}
 
 function quizTimer() {
     var timerInterval = setInterval(function () {
@@ -122,8 +123,6 @@ function quizTimer() {
 
     }, 1000);
 }
-
-
 // START QUIZ 
 
 startbtn.addEventListener("click", function () {
@@ -151,5 +150,35 @@ function Hide() {
     }
 };
 
+// SAVING SCORES//
+var submitBtn = document.querySelector("#submit")
+var InitialsInput = document.querySelector("#email");
+var msgDiv = document.querySelector("#msg");
 
 
+
+//  renderLastRegistered()
+ function displayMessage(type, message) {
+    msgDiv.textContent = message;
+    msgDiv.setAttribute("class", type);
+  }
+
+
+
+console.log(submitBtn)
+submitBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    var initials = document.querySelector("#initials").value;
+    console.log(initials)
+
+    if (initials === "") {
+        displayMessage("error", "Initials cannot be blank");
+
+    } else {
+        displayMessage("success", "Score Submitted!!");
+
+        localStorage.setItem("initials", initials)
+        renderLastRegistered()
+    }
+});
