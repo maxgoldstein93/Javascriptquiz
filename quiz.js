@@ -174,11 +174,12 @@ console.log(submitBtn)
 submitBtn.addEventListener("click", function (event) {
     event.preventDefault();
 
-    var initials = document.querySelector("#initials").value;
+    var initials = document.querySelector("#initials").value.trim();
     console.log(initials);
-    var finalScore = {initals:initials, score: secondsLeft + 1 };
-
-
+    var finalScore = {
+        initals:initials, 
+        score: secondsLeft + 1 
+    };
     if (initials === "") {
         displayMessage("error", "Initials cannot be blank");
 
@@ -186,6 +187,6 @@ submitBtn.addEventListener("click", function (event) {
         displayMessage("success", "Score Submitted!!");
 
         localStorage.setItem("initials",JSON.stringify(finalScore))
-        renderLastRegistered()
+        
     }
 });
