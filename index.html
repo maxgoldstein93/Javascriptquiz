@@ -25,24 +25,26 @@
         <div class="container border">
             <div id="hideOnClick" style="display:block">
                 <div class="row ">
-                    <div class="col text-center ">
-                        <h1>CODING QUIZ CHALLENGE!</h1>
+                    <div class="col text-center mt-3 ">
+                        <h1 class="font-weight-bold">CODING QUIZ CHALLENGE!<hr></h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col text-center ">
-                        <p> INSTRUCTIONS </p>
+                        <p> To start the quiz press the start quiz button! When you press start the first question will show and the timer will start.
+                            The quiz will end when you reach the last question and your time will be your score. For every question that is correct your time will increase 5 seconds and for every question answered wrong your time will decrease 10 seconds. Good Luck!
+                        </p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col text-center ">
-                        <button id="startQuizBtn">START Quiz!</button>
+                        <button class="btn btn-danger btn-lg mb-3"id="startQuizBtn">Start Quiz!</button>
                     </div>
                 </div>
             </div>
             <div class="hidden" class="row" style="display: none" id="questionContainer">
                 <div class="col text-center ">
-                    <p id="questionTitle">I AM THE FIRST QUESTION</p>
+                    <p class="font-weight-bold mt-3" id="questionTitle">I AM THE FIRST QUESTION</p>
                 </div>
                 <div class="col text-left ">
                     <button type="button" class="btn btn-danger m-1 p-2" id="A" class="choices"
@@ -56,7 +58,7 @@
                     <button type="button" class="btn btn-danger m-1 p-2" id="C" class="choices"
                         onclick="checkAnswer('C')">WORDSWORDS</button>
                 </div>
-                <div class="col text-left ">
+                <div class="col text-left mb-3 ">
                     <button type="button" class="btn btn-danger m-1 p-2" id="D" class="choices"
                         onclick="checkAnswer('D')">WORDSWORDS</button>
                     <div id="wrong" style="display: none"></div>

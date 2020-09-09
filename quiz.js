@@ -11,11 +11,10 @@ var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
 var wrongAnswer = document.getElementById("wrong");
 var correctAnswer = document.getElementById("wrong");
-
 var gameOver = document.getElementById("gameOver");
 var clearQuiz = document.getElementById("questionContainer")
 var choiceEl = document.getElementsByClassName("choices")
-console.log(choiceEl);
+
 
 var questions = [
     {
@@ -59,18 +58,18 @@ var questions = [
         choiceC: "<scripting>",
         choiceD: "<javascript>",
         correct: "B"
+    },
+    {
+        questionTitle: " ",
+        choiceA: "",
+        choiceB: "",
+        choiceC: "",
+        choiceD: "",
+        correct: ""
     }];
 
-// // GAME OVER
-// function gameEnd(){
-//     if(questions.length === currentQuestion + 1 ){
-//         console.log("GAMEOVER")
-
-//     }
-// }gameEnd()
-
 // variables
-var lastQuestion = questions.length - 1;
+var lastQuestion = questions.length + 1;
 var currentQuestion = 0;
 
 // display a question
@@ -83,16 +82,14 @@ function displayQuestion() {
     choiceD.textContent = q.choiceD;
     wrongAnswer.textContent = " The last question was wrong lol";
     wrongAnswer.setAttribute("style", "display: none");
-    if (currentQuestion >= 4) {
-        setTimeout(() => {console.log("endgame")
+    if (currentQuestion >= 5) {
+        console.log("endgame")
         clearQuiz.setAttribute("style", "display: none");
         gameOver.setAttribute("style", "display: block");
+        timeEl.setAttribute("style", "display: none");
         clearInterval(timerInterval);
-            
-        }, 5000);
-        
-
     }
+
 };
 
 // check answer function
@@ -111,7 +108,7 @@ function checkAnswer(answer) {
 
 
     }
-    if (currentQuestion < lastQuestion) {
+    if (currentQuestion <= lastQuestion) {
         currentQuestion++;
         setTimeout(displayQuestion, 500);
 
@@ -119,11 +116,16 @@ function checkAnswer(answer) {
 };
 
 function quizTimer() {
-     timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
         timeEl.textContent = "Time: " + secondsLeft;
 
         if (secondsLeft === 0) {
             clearInterval(timerInterval);
+            clearQuiz.setAttribute("style", "display: none");
+            gameOver.setAttribute("style", "display: block");
+            timeEl.setAttribute("style", "display: none");
+
+
         } secondsLeft--;
 
     }, 1000);
@@ -163,10 +165,10 @@ var msgDiv = document.querySelector("#msg");
 
 
 //  renderLastRegistered()
- function displayMessage(type, message) {
+function displayMessage(type, message) {
     msgDiv.textContent = message;
     msgDiv.setAttribute("class", type);
-  }
+}
 
 
 
@@ -177,8 +179,8 @@ submitBtn.addEventListener("click", function (event) {
     var initials = document.querySelector("#initials").value.trim();
     console.log(initials);
     var finalScore = {
-        initals:initials, 
-        score: secondsLeft + 1 
+        initals: initials,
+        score: secondsLeft + 1
     };
     if (initials === "") {
         displayMessage("error", "Initials cannot be blank");
@@ -186,7 +188,7 @@ submitBtn.addEventListener("click", function (event) {
     } else {
         displayMessage("success", "Score Submitted!!");
 
-        localStorage.setItem("initials",JSON.stringify(finalScore))
-        
+        localStorage.setItem("initials", JSON.stringify(finalScore))
+
     }
 });
